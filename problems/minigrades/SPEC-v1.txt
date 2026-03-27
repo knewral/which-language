@@ -7,12 +7,12 @@ DATE: 2026-03-14
 OVERVIEW
 ========================================
 
-mini-grades is a command-line student management
+mini-grades is a command-line student management 
 and performance tracking tool.
-It focuses on maintaining student grades and persists
-all data in a structured local environment.
+It focuses on maintaining student records and persists 
+basic identity data in a structured local environment.
 
-All data is persisted in a directory called .minigrades/
+All data is persisted in a directory called .minigrades/ 
 in the current working directory.
 
 ========================================
@@ -25,14 +25,15 @@ Checks if the ID already exists in the system using the "ID |" pattern.
 Output: "Student added successfully." or "Error: Student with ID <id> already exists."
 
 --- add_grade ---
-Usage: User provides the Student ID and grade.
+Usage: User provides the Student ID and a grade.
 Validates that the input is numeric and within 0-100.
+Note: In v1, this function only records the grade; complex editing is not supported.
 Output: "Grades added successfully for student <id>." or "Error: No student found with ID <id>."
 
 --- delete_student ---
 Usage: User provides the ID of the student to be removed.
-Finds the student by ID using the "ID |" pattern.
-Output: "Student and all grades deleted successfully." or "Error: No student found with ID <id>."
+Finds and removes the student record from the system.
+Output: "Student deleted successfully." or "Error: No student found with ID <id>."
 
 --- calculate_average ---
 Usage: User provides the ID of the student.
@@ -40,13 +41,8 @@ Output: Displays "Average calculation will be implemented in future weeks." or "
 
 --- list_students ---
 Usage: Select "list" command.
-Displays all students currently in the system from data.txt.
+Displays all students currently in the system.
 Output: A list showing "ID | Name" or "Error: No students found in the system. Operation aborted."
-
---- generate_report ---
-Usage: Select "report" command.
-Saves all current records into .minigrades/report.txt with a header.
-Output: "Report saved to .minigrades/report.txt" or "Error: No data available to generate a report."
 
 ========================================
 DATA FORMAT (v1)
@@ -54,10 +50,10 @@ DATA FORMAT (v1)
 
 File: .minigrades/report.txt
 Format: One student per line, fields separated by |
-(Note: Grades and Average columns are placeholders in this version)
+(Note: Grades and Average columns are placeholders/empty in this version)
 
 Example: 
-ID | NAME
+ID  | NAME
 -----------
 101 | Berke
 102 | Efe
@@ -72,4 +68,7 @@ ERROR HANDLING
 - Student not found: "Error: No student found with ID <id>."
 - Empty database: "Error: No students found in the system. Operation aborted."
 - Grade range error: "Invalid grade: Grades must be between 0 and 100."
-- No path exists: "Not initialized. Run: python solution.py init"
+- Not path exists: "Not initialized. Run: python solution.py init"
+========================================
+
+END
